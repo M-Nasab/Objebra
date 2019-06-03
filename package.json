@@ -1,0 +1,60 @@
+{
+  "name": "common-object-operations",
+  "version": "1.0.0",
+  "description": "A library to perform common operations such as merge, diff, etc on JavaScript objects",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "build": "npm run clean && run-p build:*",
+    "build:development": "NODE_ENV=development rollup -c",
+    "build:production": "NODE_ENV=production rollup -c",
+    "prebuild": "npm run clean",
+    "lint": "eslint 'src/**/*.js'",
+    "lint:fix": "eslint --fix 'src/**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M-Nasab/common-object-operations.git"
+  },
+  "keywords": [
+    "Merge",
+    "Diff"
+  ],
+  "author": "Mostafa Amini Nasab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/M-Nasab/common-object-operations/issues"
+  },
+  "homepage": "https://github.com/M-Nasab/common-object-operations#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^2.3.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "1.17.1",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.13.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-filesize": "^6.1.0",
+    "rollup-plugin-node-resolve": "^5.0.1",
+    "rollup-plugin-terser": "^5.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "npm run lint:fix",
+      "npm run test",
+      "git add"
+    ]
+  }
+}
