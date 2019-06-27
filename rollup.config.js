@@ -37,7 +37,12 @@ module.exports = {
       name: name
     }
   ],
-  plugins: [resolve(), babel(), isProduction && terser(), filesize()].filter(
-    Boolean
-  )
+  plugins: [
+    resolve(),
+    babel({
+      exclude: "node_modules/**"
+    }),
+    isProduction && terser(),
+    filesize()
+  ].filter(Boolean)
 };
