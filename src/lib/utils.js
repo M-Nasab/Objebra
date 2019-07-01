@@ -1,5 +1,5 @@
 export function isFunction(func) {
-  return func && typeof func === "function";
+  return !!func && typeof func === "function";
 }
 
 export function isSet(value) {
@@ -7,11 +7,11 @@ export function isSet(value) {
 }
 
 export function isObject(value) {
-  return value && typeof value === "object";
+  return !!value && typeof value === "object";
 }
 
 export function isArray(object) {
-  return object && Array.isArray(object);
+  return !!object && Array.isArray(object);
 }
 
 export function isPlainObject(object) {
