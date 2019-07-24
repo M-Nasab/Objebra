@@ -1,7 +1,15 @@
 import { isArray } from "../../lib/utils";
+import { Comparer } from "../../comparer";
 
 export class ArrayDiffer {
   constructor(comparer) {
+    if (!comparer) {
+      throw new Error("Comparer must be provided");
+    }
+    if (!(comparer instanceof Comparer)) {
+      throw new Error("comparer must an instance of the Comparer class");
+    }
+
     this.diff = this.diff.bind(this);
     this.match = this.match.bind(this);
     this.isValidArray = this.isValidArray.bind(this);
@@ -18,11 +26,14 @@ export class ArrayDiffer {
   }
 
   diff(original, modified) {
+    if (original === modified) {
+      return;
+    }
     let isEqual = this.comparer.isEqual(original, modified);
-    if (!isEqual) {
-      return modified;
+    if (isEqual) {
+      return;
     } else {
-      return null;
+      return modified;
     }
   }
 }

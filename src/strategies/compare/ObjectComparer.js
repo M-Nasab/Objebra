@@ -39,6 +39,16 @@ export class ObjectComperer {
   }
 
   isEqual(first, second, context) {
+    if (!context) {
+      throw new Error("Comparison Context must be provided");
+    }
+    if (!context.isEqual) {
+      throw new Error("Context must have a isEqual function");
+    }
+    if (!isFunction(context.isEqual)) {
+      throw new Error("Context isEqual must be a function");
+    }
+
     let { deep, maxDepth, keyFilter } = this.options;
 
     let depth = (context && context.recursionDepth) || 0;

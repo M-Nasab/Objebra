@@ -1,4 +1,4 @@
-import { isArray } from "../../lib/utils";
+import { isArray, isFunction, isSet, isObject } from "../../lib/utils";
 
 export class ArrayComparer {
   constructor() {
@@ -16,6 +16,16 @@ export class ArrayComparer {
   }
 
   isEqual(first, second, context) {
+    if (!context) {
+      throw new Error("Comparison Context must be provided");
+    }
+    if (!context.isEqual) {
+      throw new Error("Context must have a isEqual function");
+    }
+    if (!isFunction(context.isEqual)) {
+      throw new Error("Context isEqual must be a function");
+    }
+
     if (first === second) {
       return true;
     }
@@ -27,13 +37,36 @@ export class ArrayComparer {
     let depth = (context && context.recursionDepth) || 0;
 
     for (let i = 0; i < first.length; i++) {
-      let comparisonResult = context.isEqual(first[i], second[i], {
-        ...context,
-        recursionDepth: depth
-      });
+      let firstValue = first[i];
+      let secondValue = second[i];
 
-      if (!comparisonResult) {
+      const conditions = {
+        NotBothNull: isSet(firstValue) || isSet(secondValue),
+        OneIsNull: isSet(firstValue) !== isSet(secondValue),
+        NotObjectAndNotEqual:
+          !isObject(firstValue) &&
+          !isObject(secondValue) &&
+          firstValue !== secondValue,
+        NotBothObject: isObject(firstValue) !== isObject(secondValue),
+        BothObject: isObject(firstValue) && isObject(secondValue)
+      };
+
+      if (
+        conditions.NotBothNull &&
+        (conditions.OneIsNull ||
+          conditions.NotObjectAndNotEqual ||
+          conditions.NotBothObject)
+      ) {
         return false;
+      } else if (conditions.BothObject) {
+        let comparisonResult = context.isEqual(first[i], second[i], {
+          ...context,
+          recursionDepth: depth
+        });
+
+        if (!comparisonResult) {
+          return false;
+        }
       }
     }
 

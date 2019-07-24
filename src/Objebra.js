@@ -1,7 +1,6 @@
 import { Differ } from "./differ";
 import { ArrayDiffer } from "./strategies/diff/ArrayDiffer";
 import { ObjectDiffer } from "./strategies/diff/ObjectDiffer";
-import { NonObjectComparer } from "./strategies/compare/NonObjectComparer";
 import { Comparer } from "./comparer";
 import { ArrayComparer } from "./strategies/compare/ArrayComparer";
 import { ObjectComperer } from "./strategies/compare/ObjectComparer";
@@ -9,11 +8,7 @@ import { ObjectComperer } from "./strategies/compare/ObjectComparer";
 export class Objebra {
   constructor() {
     this.comparer = new Comparer({
-      strategies: [
-        new ArrayComparer(),
-        new ObjectComperer(),
-        new NonObjectComparer()
-      ]
+      strategies: [new ArrayComparer(), new ObjectComperer()]
     });
     this.differ = new Differ({
       strategies: [
