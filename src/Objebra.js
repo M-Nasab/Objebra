@@ -7,6 +7,9 @@ import { ObjectComperer } from "./strategies/compare/ObjectComparer";
 import { ObjectMerger } from "./strategies/merge/ObjectMerger";
 import { ArrayMerger } from "./strategies/merge/ArrayMerger";
 import { Merger } from "./merger";
+import { Cloner } from "./cloner";
+import { ArrayCloner } from "./strategies/clone/ArrayCloner";
+import { ObjectCloner } from "./strategies/clone/ObjectCloner";
 
 export class Objebra {
   constructor() {
@@ -24,6 +27,10 @@ export class Objebra {
     this.merger = new Merger({
       strategies: [new ArrayMerger(), new ObjectMerger()]
     });
+
+    this.cloner = new Cloner({
+      strategies: [new ArrayCloner(), new ObjectCloner()]
+    });
   }
 
   diff(original, modified) {
@@ -37,5 +44,9 @@ export class Objebra {
 
   isEqual(first, second) {
     return this.comparer.isEqual(first, second);
+  }
+
+  clone(object) {
+    return this.cloner.clone(object);
   }
 }
