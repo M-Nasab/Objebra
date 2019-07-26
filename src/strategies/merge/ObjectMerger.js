@@ -1,4 +1,4 @@
-import { isObject, isArray, isFunction } from "../../lib/utils";
+import { isObject, isArray, isFunction, isSet } from "../../lib/utils";
 
 export class ObjectMerger {
   constructor(options = {}) {
@@ -20,7 +20,8 @@ export class ObjectMerger {
       deep: true,
       maxDepth: 0,
       keyFilter: undefined,
-      exclude: []
+      exclude: [],
+      mergeDefaults: false
     };
 
     this.options = { ...defaultOptions, ...options };
@@ -54,7 +55,7 @@ export class ObjectMerger {
 
   // apply changes to target
   merge(target, changes, context) {
-    let { deep, maxDepth, keyFilter } = this.options;
+    let { deep, maxDepth, keyFilter, mergeDefaults } = this.options;
 
     if (!context) {
       throw new Error("Merging Context must be provided");
@@ -97,7 +98,13 @@ export class ObjectMerger {
         const BothObject = isObject(targetValue) && isObject(changedValue);
 
         if (!BothObject) {
-          mergedObject[key] = changedValue;
+          if (mergeDefaults) {
+            if (!isSet(targetValue)) {
+              mergedObject[key] = changedValue;
+            }
+          } else {
+            mergedObject[key] = changedValue;
+          }
         } else {
           if (deep || depth < maxDepth) {
             let valuesMerge = context.merge(targetValue, changedValue, {
