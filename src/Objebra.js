@@ -28,6 +28,11 @@ export class Objebra {
       strategies: [new ArrayMerger(), new ObjectMerger()]
     });
 
+    this.defaultsMerger = new Merger({
+      mergeDefaults: true,
+      strategies: [new ArrayMerger(), new ObjectMerger()]
+    });
+
     this.cloner = new Cloner({
       strategies: [new ArrayCloner(), new ObjectCloner()]
     });
@@ -40,6 +45,10 @@ export class Objebra {
   // apply changes to target
   merge(target, changes) {
     return this.merger.merge(target, changes);
+  }
+
+  mergeDefaults(options, defaults) {
+    return this.defaultsMerger.merge(options, defaults);
   }
 
   isEqual(first, second) {
