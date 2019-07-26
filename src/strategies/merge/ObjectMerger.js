@@ -71,7 +71,15 @@ export class ObjectMerger {
 
     let depth = (context && context.recursionDepth) || 0;
 
-    let mergedObject = {};
+    let mergedObject = { ...target };
+
+    if (isFunction(keyFilter)) {
+      Object.keys(mergedObject).forEach(function(key) {
+        if (!keyFilter(key)) {
+          delete mergedObject[key];
+        }
+      });
+    }
 
     if (target !== changes) {
       let changedKeys = Object.keys(changes);
