@@ -353,28 +353,10 @@ describe("ObjectMerger", function() {
       describe("When deep is false", function() {
         let objectMerger, mergeStub;
         let obj1_and_obj3_expected_merge;
-        let obj1, obj2, obj3, obj4, obj5;
+        let obj1, obj3, obj4, obj5;
 
         before(function() {
           obj1 = {
-            a: {
-              aa: "AA",
-              ab: "AB",
-              ac: "AC"
-            },
-            b: {
-              ba: "BA",
-              bb: "BB",
-              bc: "BC"
-            },
-            c: {
-              ca: "CA",
-              cb: "CB",
-              cc: "CC"
-            }
-          };
-
-          obj2 = {
             a: {
               aa: "AA",
               ab: "AB",
