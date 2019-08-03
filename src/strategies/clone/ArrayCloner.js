@@ -16,8 +16,6 @@ export class ArrayCloner {
   }
 
   clone(array, context) {
-    let { deep, maxDepth } = this.options;
-
     if (!context) {
       throw new Error("Cloning Context must be provided");
     }
@@ -26,9 +24,6 @@ export class ArrayCloner {
     }
     if (!isFunction(context.clone)) {
       throw new Error("Context clone must be a function");
-    }
-    if (!deep && context.recursionDepth > maxDepth) {
-      throw new Error("Recursion depth cannot be greate than maxDepth");
     }
 
     let clonedArray = [];
