@@ -1,9 +1,9 @@
 var expect = require("chai").expect;
 var sinon = require("sinon");
 
-import { Comparer } from "../src/comparer";
+import { Comparer } from "../../src/comparer";
 
-import { ArrayDiffer } from "../src/strategies/diff/ArrayDiffer";
+import { ArrayDiffer } from "../../src/strategies/diff/ArrayDiffer";
 
 /* eslint-disable no-undef */
 

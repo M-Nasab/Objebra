@@ -1,7 +1,7 @@
 var expect = require("chai").expect;
 var sinon = require("sinon");
 
-import { ArrayComparer } from "../src/strategies/compare/ArrayComparer";
+import { ArrayComparer } from "../../src/strategies/compare/ArrayComparer";
 
 /* eslint-disable no-undef */
 

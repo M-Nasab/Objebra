@@ -12,8 +12,8 @@
     "prebuild": "npm run clean",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "eslint --fix 'src/**/*.js'",
-    "test": "cross-env NODE_ENV=test mocha --require @babel/register",
-    "test:watch": "cross-env NODE_ENV=test mocha --require @babel/register --watch",
+    "test": "cross-env NODE_ENV=test mocha --require @babel/register --recursive",
+    "test:watch": "cross-env NODE_ENV=test mocha --require @babel/register --watch --recursive",
     "dev": "npm run test:watch"
   },
   "repository": {

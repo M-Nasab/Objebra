@@ -1,8 +1,8 @@
 var expect = require("chai").expect;
 var sinon = require("sinon");
 
-import { ObjectDiffer } from "../src/strategies/diff/ObjectDiffer.js";
-import { Comparer } from "../src/comparer.js";
+import { ObjectDiffer } from "../../src/strategies/diff/ObjectDiffer.js";
+import { Comparer } from "../../src/comparer.js";
 
 /* eslint-disable no-undef */
 

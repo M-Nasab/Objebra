@@ -1,7 +1,7 @@
 var expect = require("chai").expect;
 var sinon = require("sinon");
 
-import { ObjectComperer } from "../src/strategies/compare/ObjectComparer";
+import { ObjectComperer } from "../../src/strategies/compare/ObjectComparer";
 
 /* eslint-disable no-undef */
 

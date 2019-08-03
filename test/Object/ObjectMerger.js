@@ -1,7 +1,7 @@
 var expect = require("chai").expect;
 var sinon = require("sinon");
 
-import { ObjectMerger } from "../src/strategies/merge/ObjectMerger";
+import { ObjectMerger } from "../../src/strategies/merge/ObjectMerger";
 
 /* eslint-disable no-undef */
 
