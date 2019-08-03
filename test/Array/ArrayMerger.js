@@ -1,5 +1,4 @@
 var expect = require("chai").expect;
-var sinon = require("sinon");
 
 import { ArrayMerger } from "../../src/strategies/merge/ArrayMerger";
 
