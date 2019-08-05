@@ -348,6 +348,40 @@ describe("ObjectMerger", function() {
             )
           ).to.not.have.property("$$$hash2");
         });
+
+        it("Should handle mergeDefaults option", function() {
+          let objectMerger = new ObjectMerger({
+            deep: true,
+            mergeDefaults: true
+          });
+
+          let options = {
+            a: "A",
+            c: "C",
+            d: undefined
+          };
+
+          let defaults = {
+            a: "Aprime",
+            b: "B",
+            c: "Cprime",
+            d: "D"
+          };
+
+          let context = {
+            recursionDepth: 0,
+            merge: sinon.stub()
+          };
+
+          let mergedObject = objectMerger.merge(options, defaults, context);
+
+          expect(mergedObject).to.deep.equal({
+            a: "A",
+            b: "B",
+            c: "C",
+            d: "D"
+          });
+        });
       });
 
       describe("When deep is false", function() {
