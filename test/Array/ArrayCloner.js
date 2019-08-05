@@ -62,7 +62,7 @@ describe("ArrayCloner", function() {
   });
 
   describe("clone", function() {
-    let arrayCloner, array1, array2, array1Clone;
+    let arrayCloner, array1, array1Clone;
 
     before(function() {
       array1 = ["A", "B", "C", "D"];
