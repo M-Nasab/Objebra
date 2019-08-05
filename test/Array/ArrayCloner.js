@@ -75,7 +75,7 @@ describe("ArrayCloner", function() {
 
     it("Should throw error if cloning context is not provided", function() {
       let arrayClonerCaller = function() {
-        arrayCloner.clone(array1, array2);
+        arrayCloner.clone(array1);
       };
 
       expect(arrayClonerCaller).to.throw(Error);
@@ -87,7 +87,7 @@ describe("ArrayCloner", function() {
           recursionDepth: 2
         };
 
-        arrayCloner.clone(array1, array2, context);
+        arrayCloner.clone(array1, context);
       };
 
       expect(arrayClonerCaller).to.throw(Error);
@@ -100,7 +100,7 @@ describe("ArrayCloner", function() {
           recursionDepth: 2
         };
 
-        arrayCloner.clone(array1, array2, context);
+        arrayCloner.clone(array1, context);
       };
 
       expect(arrayClonerCaller).to.throw(Error);

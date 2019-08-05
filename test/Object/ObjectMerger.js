@@ -152,7 +152,7 @@ describe("ObjectMerger", function() {
       });
     });
 
-    describe("diff objects with object properties", function() {
+    describe("merge objects with object properties", function() {
       describe("when deep is true", function() {
         let objectMerger, context, mergeStub;
         let obj1_and_obj3_expected_merge;
