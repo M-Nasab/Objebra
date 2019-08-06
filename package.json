@@ -1,9 +1,9 @@
 {
   "name": "objebra",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library to perform common operations such as merge, diff, etc on JavaScript objects",
-  "main": "index.cjs.js",
-  "module": "index.esm.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "scripts": {
     "clean": "rimraf dist/*",
     "build": "npm run clean && run-p build:*",
@@ -22,7 +22,10 @@
   },
   "keywords": [
     "Merge",
-    "Diff"
+    "Diff",
+    "Clone",
+    "Compare",
+    "Objects"
   ],
   "author": "Mostafa Amini Nasab",
   "license": "MIT",
