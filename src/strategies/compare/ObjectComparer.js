@@ -4,7 +4,7 @@ export class ObjectComperer {
   constructor(options = {}) {
     const defaultOptions = {
       deep: true,
-      maxDepth: undefined,
+      maxDepth: 0,
       keyFilter: undefined,
       exclude: []
     };
