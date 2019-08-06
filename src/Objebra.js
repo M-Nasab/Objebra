@@ -12,29 +12,87 @@ import { ArrayCloner } from "./strategies/clone/ArrayCloner";
 import { ObjectCloner } from "./strategies/clone/ObjectCloner";
 
 export class Objebra {
-  constructor() {
+  constructor(config) {
+    let deep = true;
+    let maxDepth = 0;
+    let keyFilter = undefined;
+    let exclude = [];
+    let includeEmptyObjects = false;
+
+    if (config) {
+      deep = config.deep ? true : false;
+
+      maxDepth = config.maxDepth;
+
+      keyFilter = config.keyFilter;
+
+      exclude = config.exclude;
+
+      includeEmptyObjects = config.includeEmptyObjects ? true : false;
+    }
+
+    let objectComparerConfig = {
+      deep,
+      maxDepth,
+      keyFilter,
+      exclude
+    };
+
+    let objectDifferConfig = {
+      deep,
+      maxDepth,
+      keyFilter,
+      exclude,
+      includeEmptyObjects
+    };
+
+    let objectMergerConfig = {
+      deep,
+      maxDepth,
+      keyFilter,
+      exclude,
+      mergeDefaults: false
+    };
+
+    let defaultsMergerConfig = {
+      deep,
+      maxDepth,
+      keyFilter,
+      exclude,
+      mergeDefaults: true
+    };
+
+    let objectClonerConfig = {
+      deep,
+      maxDepth,
+      keyFilter,
+      exclude
+    };
+
     this.comparer = new Comparer({
-      strategies: [new ArrayComparer(), new ObjectComperer()]
+      strategies: [
+        new ArrayComparer(),
+        new ObjectComperer(objectComparerConfig)
+      ]
     });
 
     this.differ = new Differ({
       strategies: [
         new ArrayDiffer(this.comparer),
-        new ObjectDiffer(this.comparer)
+        new ObjectDiffer(this.comparer, objectDifferConfig)
       ]
     });
 
     this.merger = new Merger({
-      strategies: [new ArrayMerger(), new ObjectMerger()]
+      strategies: [new ArrayMerger(), new ObjectMerger(objectMergerConfig)]
     });
 
     this.defaultsMerger = new Merger({
-      mergeDefaults: true,
-      strategies: [new ArrayMerger(), new ObjectMerger()]
+      strategies: [new ArrayMerger(), new ObjectMerger(defaultsMergerConfig)]
     });
 
     this.cloner = new Cloner({
-      strategies: [new ArrayCloner(), new ObjectCloner()]
+      strategies: [new ArrayCloner(), new ObjectCloner(objectClonerConfig)]
     });
   }
 
