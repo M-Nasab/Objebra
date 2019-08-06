@@ -1,5 +1,5 @@
 {
-  "name": "common-object-operations",
+  "name": "objebra",
   "version": "1.0.0",
   "description": "A library to perform common operations such as merge, diff, etc on JavaScript objects",
   "main": "index.cjs.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/M-Nasab/common-object-operations.git"
+    "url": "git+https://github.com/M-Nasab/Objebra.git"
   },
   "keywords": [
     "Merge",
@@ -27,9 +27,9 @@
   "author": "Mostafa Amini Nasab",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/M-Nasab/common-object-operations/issues"
+    "url": "https://github.com/M-Nasab/Objebra/issues"
   },
-  "homepage": "https://github.com/M-Nasab/common-object-operations#readme",
+  "homepage": "https://github.com/M-Nasab/Objebra#readme",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
