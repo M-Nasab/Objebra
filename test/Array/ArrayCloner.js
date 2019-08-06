@@ -66,7 +66,6 @@ describe("ArrayCloner", function() {
 
     before(function() {
       array1 = ["A", "B", "C", "D"];
-      array2 = ["E", "F", "G", "H"];
 
       array1Clone = ["A", "B", "C", "D"];
 
