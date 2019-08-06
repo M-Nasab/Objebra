@@ -1,6 +1,6 @@
 {
   "name": "objebra",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to perform common operations such as merge, diff, etc on JavaScript objects",
   "main": "index.cjs.js",
   "module": "index.esm.js",
