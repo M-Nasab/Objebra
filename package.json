@@ -4,6 +4,11 @@
   "description": "A library to perform common operations such as merge, diff, etc on JavaScript objects",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "clean": "rimraf dist/*",
     "build": "npm run clean && run-p build:*",
@@ -14,7 +19,8 @@
     "lint:fix": "eslint --fix 'src/**/*.js'",
     "test": "cross-env NODE_ENV=test mocha --require @babel/register --recursive",
     "test:watch": "cross-env NODE_ENV=test mocha --require @babel/register --watch --recursive",
-    "dev": "npm run test:watch"
+    "dev": "npm run test:watch",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
