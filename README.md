@@ -72,3 +72,7 @@ objebra.mergeDefaults(a, defaults); // { a: "A", b: "B", c: "C", d: "DD", e: "EE
 ## Dependencies
 
 None.
+
+## To Do
+
+* [] Handle circular reference
