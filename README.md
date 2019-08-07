@@ -75,4 +75,4 @@ None.
 
 ## To Do
 
-* [] Handle circular reference
+* [ ] Handle circular reference
