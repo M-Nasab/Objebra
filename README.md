@@ -1,4 +1,7 @@
 # Objebra
+
+[![build status][https://img.shields.io/travis/m-nasab/objebra]][https://travis-ci.org/m-nasab/objebra] [![npm version][https://img.shields.io/npm/v/objebra]][https://www.npmjs.com/package/objebra]
+
 A flexible and configurable library to perform operations such as diff, merge, clone, etc on JavaScript objects
 
 ## Install
@@ -12,7 +15,7 @@ npm install --save objebra
 ## Usage
 
 ```js
-import Objebra from 'objebra';
+import Objebra from "objebra";
 
 // Create Objebra instance
 const objebra = new Objebra();
@@ -28,7 +31,6 @@ const b = {
   b: "B",
   c: "C"
 };
-
 
 const c = {
   a: "A",
@@ -65,7 +67,6 @@ objebra.merge(a, c); // { a: "A", b: "B", c: "C", D: "D" }
 // Apply defaults
 
 objebra.mergeDefaults(a, defaults); // { a: "A", b: "B", c: "C", d: "DD", e: "EE" }
-
 ```
 
 ## Dependencies
