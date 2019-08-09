@@ -2,7 +2,7 @@
 
 [![build status](https://img.shields.io/travis/m-nasab/objebra)](https://travis-ci.org/m-nasab/objebra) [![npm version](https://img.shields.io/npm/v/objebra)](https://www.npmjs.com/package/objebra)
 
-A flexible and configurable library to perform operations such as diff, merge, clone, etc on JavaScript objects
+A flexible and configurable library to perform operations such as diff, merge, clone, etc recursively on JavaScript objects
 
 ## Install
 
@@ -72,6 +72,12 @@ objebra.mergeDefaults(a, defaults); // { a: "A", b: "B", c: "C", d: "DD", e: "EE
 ## Dependencies
 
 None.
+
+## Test
+
+```bash
+npm test
+```
 
 ## To Do
 
